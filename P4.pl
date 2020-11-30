@@ -24,17 +24,15 @@ horizontalEndGame(G,J):- transpose(G,T), verticalEndGame(T,J).
   J : Joueur
   G : Grille de jeu
 */
-diag3([L|Q],J,I,N):- LI is I+1, nth0(LI,L,J), N is 1.
-diag2([L|Q],J,I,N):- LI is I+1, nth0(LI,L,J), diag3(Q,J,LI,R), N is R+1.
-diag1([L|Q],J,I,N):- LI is I+1, nth0(LI,L,J), diag2(Q,J,LI,R), N is R+1.
+diag1([L|Q],J,I,N):- LI is I+1, nth0(LI,L,J), N is 1.
+diag1([L|Q],J,I,N):- LI is I+1, nth0(LI,L,J), diag1(Q,J,LI,R), N is R+1.
 diagonalEndGame([L|Q],J,N):- nth0(I,L,J), diag1(Q,J,I,R), N is R+1.
 diagonalEndGame(L,J):- diagonalEndGame(L,J,N), N == 4.
 diagonalEndGame([_|G],J):- diagonalEndGame(G,J,N), N == 4.
 diagonalEndGame([_|G],J):- diagonalEndGame(G,J).
 
-diag3Bis([L|Q],J,I,N):- LI is I-1, nth0(LI,L,J), N is 1.
-diag2Bis([L|Q],J,I,N):- LI is I-1, nth0(LI,L,J), diag3Bis(Q,J,LI,R), N is R+1.
-diag1Bis([L|Q],J,I,N):- LI is I-1, nth0(LI,L,J), diag2Bis(Q,J,LI,R), N is R+1.
+diag1Bis([L|Q],J,I,N):- LI is I-1, nth0(LI,L,J), N is 1.
+diag1Bis([L|Q],J,I,N):- LI is I-1, nth0(LI,L,J), diag1Bis(Q,J,LI,R), N is R+1.
 diagonalEndGameBis([L|Q],J,N):- nth0(I,L,J), diag1Bis(Q,J,I,R), N is R+1.
 diagonalEndGameBis(L,J):- diagonalEndGameBis(L,J,N), N == 4.
 diagonalEndGameBis([_|G],J):- diagonalEndGameBis(G,J,N), N == 4.
@@ -68,4 +66,4 @@ jouerCoupValide(G,I,X):- N is 0, jouerCoupValide(G,I,X,N,L3), maJGrille(G,I,L3).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /* humain vs humain */
 
-jouerCoupX(COL)
+jouerCoupX(COL).
