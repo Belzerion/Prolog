@@ -44,7 +44,8 @@ diagonalEndGameBis([_|G],J):- diagonalEndGameBis(G,J).
 diagonalEnd(G,J):- diagonalEndGame(G,J); diagonalEndGameBis(G,J).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /* Test si la grille est pleine
-  G : Grille de jeu
+  T : tête de la grille de jeu
+  Q : queue de la grille de jeu
 */
 fullGrid([]).
 fullGrid([T|Q]):- length(T,6), fullGrid(Q).
