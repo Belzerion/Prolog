@@ -50,7 +50,10 @@ fullGrid([]).
 fullGrid([T|Q]):- length(T,6), fullGrid(Q).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-/* Jouer un Coup */
+/* Jouer un Coup
+  référence du inserto : https://stackoverflow.com/questions/35069340/insert-element-into-a-2d-list-in-prolog
+*/
+
 inserto(_,[],[],_).
 inserto(E,[_|Xs],[E|Ys],1) :- inserto(E,Xs,Ys,0),!.
 inserto(E,[X|Xs],[X|Ys],N) :- N1 #= N-1,  % N<=length(List)
@@ -62,3 +65,6 @@ jouerCoupValide([L|_],I,X,N,L3):- N == I, append(L,[X],L3).
 jouerCoupValide([L|Q],I,X,N,L3):- R is N+1, jouerCoupValide(Q,I,X,R,L3).
 jouerCoupValide(G,I,X):- N is 0, jouerCoupValide(G,I,X,N,L3), maJGrille(G,I,L3).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/* humain vs humain */
+
+jouerCoupX(COL)
