@@ -28,14 +28,12 @@ diag1([L|Q],J,I,N):- LI is I+1, nth0(LI,L,J), N is 1.
 diag1([L|Q],J,I,N):- LI is I+1, nth0(LI,L,J), diag1(Q,J,LI,R), N is R+1.
 diagonalEndGame([L|Q],J,N):- nth0(I,L,J), diag1(Q,J,I,R), N is R+1.
 diagonalEndGame(L,J):- diagonalEndGame(L,J,N), N == 4.
-diagonalEndGame([_|G],J):- diagonalEndGame(G,J,N), N == 4.
 diagonalEndGame([_|G],J):- diagonalEndGame(G,J).
 
 diag1Bis([L|Q],J,I,N):- LI is I-1, nth0(LI,L,J), N is 1.
 diag1Bis([L|Q],J,I,N):- LI is I-1, nth0(LI,L,J), diag1Bis(Q,J,LI,R), N is R+1.
 diagonalEndGameBis([L|Q],J,N):- nth0(I,L,J), diag1Bis(Q,J,I,R), N is R+1.
 diagonalEndGameBis(L,J):- diagonalEndGameBis(L,J,N), N == 4.
-diagonalEndGameBis([_|G],J):- diagonalEndGameBis(G,J,N), N == 4.
 diagonalEndGameBis([_|G],J):- diagonalEndGameBis(G,J).
 
 /* Test à lancer pour le test de fin diagonale*/
